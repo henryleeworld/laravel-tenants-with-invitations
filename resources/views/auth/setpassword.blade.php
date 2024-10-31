@@ -11,7 +11,7 @@
                     <form method="POST" action="{{ route('setpassword.store') }}">
                         @csrf
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -25,7 +25,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="mb-3 row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
@@ -33,7 +33,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Save Password') }}

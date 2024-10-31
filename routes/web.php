@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SetPasswordController;
+use App\Http\Controllers\TenantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -8,19 +11,19 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::redirect('/', '/login');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::resource('tenants', \App\Http\Controllers\TenantController::class);
-    Route::get('setpassword', [\App\Http\Controllers\SetPasswordController::class, 'create'])->name('setpassword');
-    Route::post('setpassword', [\App\Http\Controllers\SetPasswordController::class, 'store'])->name('setpassword.store');
+    Route::resource('tenants', TenantController::class);
+    Route::get('setpassword', [SetPasswordController::class, 'create'])->name('setpassword');
+    Route::post('setpassword', [SetPasswordController::class, 'store'])->name('setpassword.store');
 });
 
-Route::get('invitation/{user}', [\App\Http\Controllers\TenantController::class, 'invitation'])->name('invitation');
+Route::get('invitation/{user}', [TenantController::class, 'invitation'])->name('invitation');

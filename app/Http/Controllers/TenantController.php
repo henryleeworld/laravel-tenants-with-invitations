@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateTenantRequest;
 use App\Models\User;
 use App\Notifications\TenantInviteNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 
 class TenantController extends Controller
@@ -89,7 +90,7 @@ class TenantController extends Controller
 
     public function invitation(User $user)
     {
-        if (!request()->hasValidSignature() || $user->password != 'password') {
+        if (!request()->hasValidSignature() || !Hash::check('password', $user->password)) {
             abort(401);
         }
 

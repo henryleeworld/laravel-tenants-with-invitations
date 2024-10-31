@@ -11,7 +11,7 @@
                         <form action="{{ route('tenants.store') }}" method="POST">
                             @csrf
 
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ trans('frontend.tenant.create.content.name') }}</label>
 
                                 <div class="col-md-6">
@@ -25,7 +25,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ trans('frontend.tenant.create.content.email') }}</label>
 
                                 <div class="col-md-6">
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <div class="mb-3 row">
                                 <label for="domain" class="col-md-4 col-form-label text-md-right">{{ trans('frontend.tenant.create.content.domain') }}</label>
 
                                 <div class="col-md-6">
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-0">
+                            <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
                                         {{ trans('frontend.tenant.create.content.save_tenant') }}

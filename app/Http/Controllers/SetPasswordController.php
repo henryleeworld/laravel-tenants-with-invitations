@@ -15,10 +15,10 @@ class SetPasswordController extends Controller
     public function store(StorePasswordRequest $request)
     {
         auth()->user()->update([
-            'password' => bcrypt($request->password)
+            'password' => $request->password
         ]);
 
         return redirect()->route('home')
-            ->with('status', 'Password set successfully');
+            ->with('status', __('Password set successfully'));
     }
 }

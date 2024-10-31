@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class IsPasswordSetMiddleware
 {
@@ -16,7 +17,7 @@ class IsPasswordSetMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->password == 'secret'
+        if (auth()->check() && Hash::check('password', auth()->user()->password)
             && !$request->is('setpassword') && !$request->password) {
             return redirect()->route('setpassword');
         }
